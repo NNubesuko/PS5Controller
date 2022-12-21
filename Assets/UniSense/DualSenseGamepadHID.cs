@@ -116,10 +116,10 @@ namespace UniSense
         {
             var command = DualSenseHIDOutputReport.Create();
 
-            if (m_rightTriggerState.HasValue)
+            if (m_leftTriggerState.HasValue)
                 command.SetRightTriggerState(m_rightTriggerState.Value);
             
-            if (m_leftTriggerState.HasValue)
+            if (m_rightTriggerState.HasValue)
                 command.SetLeftTriggerState(m_leftTriggerState.Value);
 
             ExecuteCommand(ref command);
