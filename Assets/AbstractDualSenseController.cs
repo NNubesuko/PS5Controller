@@ -1,12 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UniSense;
 
 public abstract class AbstractDualSenseController {
 
-    public DualSenseGamepadHID DualSense { get; protected set; }
+    protected DualSenseGamepadHID DualSense { get; private set; }
 
-    internal virtual void OnConnect(DualSenseGamepadHID dualSense)
-        => DualSense = dualSense;
-    
-    internal virtual void OnDisconnect() => DualSense = null;
+    protected void OnConnect(DualSenseGamepadHID dualSense) {
+        DualSense = dualSense;
+    }
+
+    protected void OnDisconnect() {
+        DualSense = null;
+    }
 
 }

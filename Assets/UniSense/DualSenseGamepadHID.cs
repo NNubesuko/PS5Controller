@@ -115,8 +115,12 @@ namespace UniSense
         public void ResetTriggersState()
         {
             var command = DualSenseHIDOutputReport.Create();
-            command.SetRightTriggerState(m_rightTriggerState.Value);
-            command.SetLeftTriggerState(m_leftTriggerState.Value);
+
+            if (m_rightTriggerState.HasValue)
+                command.SetRightTriggerState(m_rightTriggerState.Value);
+            
+            if (m_leftTriggerState.HasValue)
+                command.SetLeftTriggerState(m_leftTriggerState.Value);
 
             ExecuteCommand(ref command);
         }
