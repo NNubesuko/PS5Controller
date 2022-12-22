@@ -12,9 +12,6 @@ public class Main : MonoBehaviour {
         dualSense = GetComponent<DualSense>();
     }
 
-    private void Start() {
-    }
-
     private void Update() {
         if (dualSense.IsNull) return;
 
