@@ -15,16 +15,9 @@ public class DualSense : AbstractDualSenseController {
         DualSenseGamepadHID dualSense = DualSenseGamepadHID.FindCurrent();
         if (dualSense != null) {
             NotifyConnection(dualSense);
-            UpdateDualSense();
         } else {
             NotifyDisconnection();
         }
-    }
-
-    private void Update() {
-        if (IsNull) return;
-
-        UpdateDualSense();
     }
 
     private void OnEnable() {

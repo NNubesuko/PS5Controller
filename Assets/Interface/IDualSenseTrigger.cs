@@ -5,10 +5,70 @@ using UniSense;
 
 public interface IDualSenseTrigger {
 
-    void AwakeTrigger() {
+    int LeftTriggerEffectType { get; set; }
+    float LeftContinuousForce { get; set; }
+    float LeftContinuousStartPosition { get; set; }
+    float LeftSectionForce { get; set; }
+    float LeftSectionStartPosition { get; set; }
+    float LeftSectionEndPosition { get; set; }
+    float LeftEffectStartPosition { get; set; }
+    float LeftEffectBeginForce { get; set; }
+    float LeftEffectMiddleForce { get; set; }
+    float LeftEffectEndForce { get; set; }
+    float LeftEffectFrequency { get; set; }
+    bool LeftEffectKeepEffect { get; set; }
+
+    int RightTriggerEffectType { get; set; }
+    float RightContinuousForce { get; set; }
+    float RightContinuousStartPosition { get; set; }
+    float RightSectionForce { get; set; }
+    float RightSectionStartPosition { get; set; }
+    float RightSectionEndPosition { get; set; }
+    float RightEffectStartPosition { get; set; }
+    float RightEffectBeginForce { get; set; }
+    float RightEffectMiddleForce { get; set; }
+    float RightEffectEndForce { get; set; }
+    float RightEffectFrequency { get; set; }
+    bool RightEffectKeepEffect { get; set; }
+
+    void AwakeTrigger(
+        DualSenseTriggerState leftTriggerState,
+        DualSenseTriggerState rightTriggerState
+    ) {
+        leftTriggerState = new DualSenseTriggerState{
+            EffectType = DualSenseTriggerEffectType.ContinuousResistance,
+            EffectEx = new DualSenseEffectExProperties(),
+            Section = new DualSenseSectionResistanceProperties(),
+            Continuous = new DualSenseContinuousResistanceProperties()
+        };
+
+        rightTriggerState = new DualSenseTriggerState
+        {
+            EffectType = DualSenseTriggerEffectType.ContinuousResistance,
+            EffectEx = new DualSenseEffectExProperties(),
+            Section = new DualSenseSectionResistanceProperties(),
+            Continuous = new DualSenseContinuousResistanceProperties()
+        };
     }
 
-    void UpdateTrigger() {
+    void UpdateTrigger(
+        DualSenseGamepadHID dualSense,
+        DualSenseTriggerState leftTriggerState,
+        DualSenseTriggerState rightTriggerState
+    ) {
+        DualSenseGamepadState state = new DualSenseGamepadState{
+            LeftTrigger = leftTriggerState,
+            RightTrigger = rightTriggerState
+        };
+        dualSense?.SetGamepadState(state);
+    }
+
+    DualSenseTriggerEffectType SetTriggerEffectType(int index) {
+        if (index == 0) return DualSenseTriggerEffectType.ContinuousResistance;
+        if (index == 1) return DualSenseTriggerEffectType.SectionResistance;
+        if (index == 2) return DualSenseTriggerEffectType.EffectEx;
+
+        return DualSenseTriggerEffectType.NoResistance;
     }
 
 }

@@ -32,34 +32,4 @@ public interface IDualSenseButton {
 
     ButtonControl MicMute { get; set; }
 
-    void Update(DualSenseGamepadHID dualSense) {
-        Cross = dualSense.crossButton;
-        Square = dualSense.squareButton;
-        Circle = dualSense.circleButton;
-        Triangle = dualSense.triangleButton;
-
-        R1 = dualSense.R1;
-        R2 = dualSense.R2;
-        R3 = dualSense.R3;
-
-        L1 = dualSense.L1;
-        L2 = dualSense.L2;
-        L3 = dualSense.L3;
-
-        Share = dualSense.shareButton;
-        Option = dualSense.optionsButton;
-        Touchpad = dualSense.touchpadButton;
-
-        Dpad = dualSense.dpad;
-        DpadUp = dualSense.dpad.up;
-        DpadLeft = dualSense.dpad.left;
-        DpadRight = dualSense.dpad.right;
-        DpadDown = dualSense.dpad.down;
-
-        LeftStick = Mathf.Abs(dualSense.leftStick.ReadValue().sqrMagnitude) > 0f;
-        RightStick = Mathf.Abs(dualSense.rightStick.ReadValue().sqrMagnitude) > 0F;
-
-        MicMute = dualSense.micMuteButton;
-    }
-
 }

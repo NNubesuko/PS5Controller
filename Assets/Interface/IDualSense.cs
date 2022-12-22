@@ -7,12 +7,10 @@ public interface IDualSense {
 
     void OnConnect(DualSenseGamepadHID dualSense) {
         DualSense = dualSense;
-        IsNull = false;
     }
 
     void OnDisconnect() {
         DualSense = null;
-        IsNull = true;
     }
 
 }
