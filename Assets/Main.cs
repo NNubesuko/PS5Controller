@@ -16,7 +16,7 @@ public class Main : MonoBehaviour {
         if (dualSense.IsNull) return;
 
         Vector3 velocity = transform.position;
-                
+
         if (dualSense.DpadLeft.isPressed) {
             velocity.x -= mvoeSpeed * Time.deltaTime;
         }
