@@ -6,7 +6,7 @@ public interface IDualSenseMoter {
     float RightMoter { get; set; }
 
     void Update(DualSenseGamepadHID dualSense) {
-        dualSense?.SetMotorSpeeds(LeftMoter, RightMoter);
+        dualSense?.SetMotorSpeeds(RightMoter, LeftMoter);
     }
 
 }
