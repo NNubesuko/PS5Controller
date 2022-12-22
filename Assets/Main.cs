@@ -12,6 +12,22 @@ public class Main : MonoBehaviour {
         dualSense = GetComponent<DualSense>();
     }
 
+    private void Start() {
+        dualSense.LeftContinuousForce = 1f;
+        dualSense.LeftContinuousStartPosition = 0f;
+        
+        dualSense.LeftSectionForce = 1f;
+        dualSense.LeftSectionStartPosition = 0f;
+        dualSense.LeftSectionEndPosition = 1f;
+
+        dualSense.LeftEffectStartPosition = 0f;
+        dualSense.LeftEffectBeginForce = 0f;
+        dualSense.LeftEffectMiddleForce = 0f;
+        dualSense.LeftEffectEndForce = 0f;
+        dualSense.LeftEffectFrequency = 0f;
+        dualSense.LeftEffectKeepEffect = false;
+    }
+
     private void Update() {
         if (dualSense.IsNull) return;
 

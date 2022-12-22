@@ -31,38 +31,6 @@ public interface IDualSenseTrigger {
     float RightEffectFrequency { get; set; }
     bool RightEffectKeepEffect { get; set; }
 
-    void AwakeTrigger(
-        DualSenseTriggerState leftTriggerState,
-        DualSenseTriggerState rightTriggerState
-    ) {
-        leftTriggerState = new DualSenseTriggerState{
-            EffectType = DualSenseTriggerEffectType.ContinuousResistance,
-            EffectEx = new DualSenseEffectExProperties(),
-            Section = new DualSenseSectionResistanceProperties(),
-            Continuous = new DualSenseContinuousResistanceProperties()
-        };
-
-        rightTriggerState = new DualSenseTriggerState
-        {
-            EffectType = DualSenseTriggerEffectType.ContinuousResistance,
-            EffectEx = new DualSenseEffectExProperties(),
-            Section = new DualSenseSectionResistanceProperties(),
-            Continuous = new DualSenseContinuousResistanceProperties()
-        };
-    }
-
-    void UpdateTrigger(
-        DualSenseGamepadHID dualSense,
-        DualSenseTriggerState leftTriggerState,
-        DualSenseTriggerState rightTriggerState
-    ) {
-        DualSenseGamepadState state = new DualSenseGamepadState{
-            LeftTrigger = leftTriggerState,
-            RightTrigger = rightTriggerState
-        };
-        dualSense?.SetGamepadState(state);
-    }
-
     DualSenseTriggerEffectType SetTriggerEffectType(int index) {
         if (index == 0) return DualSenseTriggerEffectType.ContinuousResistance;
         if (index == 1) return DualSenseTriggerEffectType.SectionResistance;
