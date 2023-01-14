@@ -25,6 +25,7 @@ public abstract class AbstractDualSenseController :
     /*
      * Button
      */
+    #region Button
     public ButtonControl Cross {
         get => DualSense.crossButton;
         set => value = DualSense.crossButton;
@@ -109,6 +110,7 @@ public abstract class AbstractDualSenseController :
         get => DualSense.micMuteButton;
         set => value = DualSense.micMuteButton;
     }
+    #endregion
 
     /*
      * Moter
@@ -120,6 +122,7 @@ public abstract class AbstractDualSenseController :
     /*
      * Trigger
      */
+    #region Trigger
     protected DualSenseTriggerState leftTriggerState;
     protected DualSenseTriggerState rightTriggerState;
 
@@ -132,8 +135,8 @@ public abstract class AbstractDualSenseController :
         set => leftTriggerState.Continuous.Force = (byte)(value * 255);
     }
     public float LeftContinuousStartPosition {
-        get => leftTriggerState.Section.Force;
-        set => leftTriggerState.Section.Force = (byte)(value * 255);
+        get => leftTriggerState.Continuous.StartPosition;
+        set => leftTriggerState.Continuous.StartPosition = (byte)(value * 255);
     }
     public float LeftSectionForce {
         get => leftTriggerState.Section.Force;
@@ -220,6 +223,7 @@ public abstract class AbstractDualSenseController :
         get => rightTriggerState.EffectEx.KeepEffect;
         set => rightTriggerState.EffectEx.KeepEffect = value;
     }
+    #endregion
 
     protected void AwakeState() {
         leftTriggerState = new DualSenseTriggerState{

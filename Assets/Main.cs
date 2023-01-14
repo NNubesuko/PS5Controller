@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniSense;
 
 public class Main : MonoBehaviour {
 
     [SerializeField] private float mvoeSpeed;
+    [SerializeField] private DualSenseTriggerEffectType effectType;
+    [SerializeField] private float startPosition;
+    [SerializeField] private float force;
 
     private DualSense dualSense;
 
@@ -13,23 +17,14 @@ public class Main : MonoBehaviour {
     }
 
     private void Start() {
-        dualSense.LeftContinuousForce = 1f;
-        dualSense.LeftContinuousStartPosition = 0f;
-        
-        dualSense.LeftSectionForce = 1f;
-        dualSense.LeftSectionStartPosition = 0f;
-        dualSense.LeftSectionEndPosition = 1f;
-
-        dualSense.LeftEffectStartPosition = 0f;
-        dualSense.LeftEffectBeginForce = 0f;
-        dualSense.LeftEffectMiddleForce = 0f;
-        dualSense.LeftEffectEndForce = 0f;
-        dualSense.LeftEffectFrequency = 0f;
-        dualSense.LeftEffectKeepEffect = false;
+        // dualSense.LeftTriggerEffectType = effectType;
     }
 
     private void Update() {
         if (dualSense.IsNull) return;
+
+        dualSense.LeftContinuousStartPosition = startPosition;
+        dualSense.LeftContinuousForce = force;
 
         Vector3 velocity = transform.position;
 
